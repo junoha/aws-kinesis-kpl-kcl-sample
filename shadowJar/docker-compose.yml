@@ -1,0 +1,24 @@
+# Use Environment variables in ".env" file, check "docker-compose config"
+# https://docs.docker.com/compose/environment-variables/#set-environment-variables-with-docker-compose-run
+
+version: '3.5'
+services:
+  kinesis-producer:
+    build:
+      context: ./producer
+    container_name: kpl
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      STREAM_NAME: ${STREAM_NAME}
+      REGION_NAME: ${REGION_NAME}
+      SECONDS_TO_RUN: ${SECONDS_TO_RUN}
+  kinesis-consumer:
+    build:
+      context: ./consumer
+    container_name: kcl
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      STREAM_NAME: ${STREAM_NAME}
+      REGION_NAME: ${REGION_NAME}

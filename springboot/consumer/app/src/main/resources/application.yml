@@ -1,0 +1,11 @@
+aws:
+  kinesis:
+    stream_name: ${STREAM_NAME:sandbox}
+    region_name: ${REGION_NAME:ap-northeast-1}
+    initial_position: ${INITIAL_POSITION:LATEST}
+    lease_initial_position: ${LEASE_INITIAL_POSITION:TRIM_HORIZON}
+    timestamp: ${TIMESTAMP:20210101000000}
+    fanout: ${FANOUT:false}
+logging:
+  level:
+    root: ${LOG_LEVEL:INFO}
